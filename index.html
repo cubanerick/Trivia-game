@@ -10,23 +10,30 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Video Game Trivia</h1>
+        <nav class="navbar navbar-light bg-light navbar-expand-lg">
+            <a class="navbar-brand" href="#">
+                <img src="https://www.shareicon.net/download/2015/11/12/670868_game.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+                <strong>Video Game Trivia !!!</strong>
+            </a>
+        </nav>
+        <img id="startImage" src="http://d3u67r7pp2lrq5.cloudfront.net/product_photos/62927994/file_b2fd7d10e4_original.jpg"/>
+        <br>
+        <button class="restart btn btn-outline-dark btn-block">Restart</button>
+        <button class="start btn btn-outline-dark btn-block">Start</button>
+        <div  id="jumbo" class="jumbotron jumbotron-fluid">
+            <div class="container-fluid">
+                <h2 id="question"></h2>
             </div>
         </div>
         <div class="row">
-            <div id="maincontent" class="col-md-6">
-                <h2 id="question"></h2>
-                <button class="answers" id="a"></button>
-                <button class="answers" id="b"></button>
-                <button class="answers" id="c"></button>
-                <button class="answers" id="d"></button>
+            <div id="maincontent" class="col-md-10">
+                <button  class="answers" id="a"></button>
+                <button  class="answers" id="b"></button>
+                <button  class="answers" id="c"></button>
+                <button  class="answers" id="d"></button>
                 <div id="showanswer"></div>
-                <button class="restart">Restart</button>
-                <button class="start">Start</button>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-2">
                 <h3 id="timer"></h3>
             </div>
         </div>

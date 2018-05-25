@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var QandAArr = [
-    { question: "In Sonic the Hedgehog for the Sega Genesis, what is the color of the second Chaos Emerald you can get from Special Stages?",
+    { question: 'In "Sonic the Hedgehog" for the Sega Genesis, what is the color of the second Chaos Emerald you can get from Special Stages?',
     correct_answer: "Orange",
     incorrect_answers: [
     "Blue",
@@ -36,7 +36,7 @@ $(document).ready(function() {
     ],
     Image:"<img src='http://www.cubed3.com/media/2016/April/doom1pc6.jpg'/>"
     },
-    {question: "In which game did the character &quot;Mario&quot; make his first appearance?",
+    {question: 'In which game did the character "Mario" make his first appearance?',
     correct_answer: "Donkey Kong",
     incorrect_answers: [
     "Super Mario Bros.",
@@ -45,7 +45,7 @@ $(document).ready(function() {
     ],
     Image:"<img src='https://www.destructoid.com/ul/user/1/160366-400267-DonkeyKongarcadePNG-noscale.jpg'/>"
     },
-    {question: "Who voices Max Payne in the 2001 game &quot;Max Payne&quot;?",
+    {question: 'Who voices Max Payne in the 2001 game "Max Payne"?',
     correct_answer: "James McCaffrey",
     incorrect_answers: [
     "Sam Lake",
@@ -54,7 +54,7 @@ $(document).ready(function() {
     ],
     Image:"<img src='https://www.picsofcelebrities.com/celebrity/james-mccaffrey/pictures/large/pictures-of-james-mccaffrey.jpg'/>"
     },
-    {question: "What device allows Tracer to manipulate her own time in the game &quot;Overwatch&quot;?",
+    {question: 'What device allows Tracer to manipulate her own time in the game "Overwatch"?',
     correct_answer: "Chronal Accelerator",
     "incorrect_answers": [
     "B.L.I.N.K",
@@ -72,7 +72,7 @@ $(document).ready(function() {
     ],
     Image:"<img src='https://vignette.wikia.nocookie.net/metalgear/images/7/7a/MGS4MerylPP.png/revision/latest?cb=20131222064410'/>"
     },
-    {question: "In the beta version of the 1986 game &quot;The Legend of Zelda&quot;, players have the choice between a sword and what other item?",
+    {question: 'In the beta version of the 1986 game "The Legend of Zelda" players have the choice between a sword and what other item?',
     correct_answer: "Boomerang ",
     incorrect_answers: [
     "Spear",
@@ -99,6 +99,8 @@ $(document).ready(function() {
     var incorrectanswers = 0;
     $(".restart").hide();
     $(".answers").hide();
+    $("#jumbo").hide();
+    $("#timer").hide();
 
     function shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;
@@ -120,8 +122,8 @@ $(document).ready(function() {
     };
 
     function decrement(){
-        timer--;
         $("#timer").text(timer);
+        timer--;
         if(timer === 0){
             incorrectanswer();
         }
@@ -139,6 +141,9 @@ $(document).ready(function() {
         $("button").show();
         $(".restart").hide();
         $(".start").hide();
+        $("#jumbo").show();
+        $("#startImage").hide();
+        $("#timer").show();
         if(qnum <10){
         
         intervalId = setInterval(decrement, 1000)
@@ -149,10 +154,10 @@ $(document).ready(function() {
         var ar = ["a","b","c","d"]
         var newar = shuffle(ar)
 
-        $("#" + newar[0]).text(QandAArr[qnum].correct_answer).attr("class","correct")
-        $("#" + newar[1]).text(QandAArr[qnum].incorrect_answers[0]).attr("class","incorrect")
-        $("#" + newar[2]).text(QandAArr[qnum].incorrect_answers[1]).attr("class","incorrect")
-        $("#" + newar[3]).text(QandAArr[qnum].incorrect_answers[2]).attr("class","incorrect")
+        $("#" + newar[0]).text(QandAArr[qnum].correct_answer).attr("class","correct btn btn-outline-dark btn-block")
+        $("#" + newar[1]).text(QandAArr[qnum].incorrect_answers[0]).attr("class","incorrect btn btn-outline-dark btn-block")
+        $("#" + newar[2]).text(QandAArr[qnum].incorrect_answers[1]).attr("class","incorrect btn btn-outline-dark btn-block")
+        $("#" + newar[3]).text(QandAArr[qnum].incorrect_answers[2]).attr("class","incorrect btn btn-outline-dark btn-block")
         
 
         }
@@ -165,15 +170,19 @@ $(document).ready(function() {
     function endgame(){
         emptyall();
         $(".restart").show();
+        $("#jumbo").hide();
+        $("#startImage").show();
         clearInterval(intervalId)
-        $("#showanswer").append("Incorrect Answer Count: " + incorrectanswers);
+        $("#showanswer").append("Incorrect Answer Count: " + incorrectanswers + "<br><br><br>");
         $("#showanswer").append("Correct Answer Count: " + correctanswers);
     }
 
     function incorrectanswer(){
         clearInterval(intervalId);
         timer = 10;
-        emptyall();       
+        emptyall();
+        $("#jumbo").hide();
+        $("#timer").hide();       
         $("#showanswer").html("Wrong Answer, here's a hint: ");
         $("#showanswer").append(QandAArr[qnum].Image)
         incorrectanswers++;
@@ -185,7 +194,9 @@ $(document).ready(function() {
     function correctanswer(){
         clearInterval(intervalId);
         timer = 10;
-        emptyall();       
+        emptyall();
+        $("#jumbo").hide(); 
+        $("#timer").hide();      
         $("#showanswer").html("Thats Correct!! ");
         $("#showanswer").append(QandAArr[qnum].Image)
         correctanswers++;

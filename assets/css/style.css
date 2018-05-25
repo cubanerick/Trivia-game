@@ -1,0 +1,24 @@
+.container, row {
+    width: 100%;
+    background-color:#76d3d0;
+    padding: 30pt;
+}
+
+#maincontent {
+    width: 100%;
+}
+
+img {
+    width: 100%;
+}
+
+body {
+    background-color: #3f7a78;
+}
+
+#timer{
+    text-align: center;
+    background-color: #3f7a78;
+    color: azure;
+    padding: 20pt;
+}
